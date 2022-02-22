@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sheena.ex.lesson03.dao.ReviewDAO">
+
+<!-- 예제1 SELECT 다루기 -->
+	
+	<select id="selectReview" resultType="com.sheena.ex.lesson03.model.Review"
+	parameterType="int">
+		SELECT
+			`id`
+			, `storeId`
+			, `menu`
+			, `userName`
+			, `point`
+			, `review`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`new_review`
+		WHERE
+			`id` = #{id}
+	</select>
+
+
+	
+<!-- 예제2 INSERT 다루기 -->
+<!-- 방법1 -->
+	<insert id="insertReviewByObject" parameterType="com.sheena.ex.lesson03.model.Review">
+		INSERT INTO `new_review`
+		(
+			`storeId`
+			, `menu`
+			, `userName`
+			, `point`
+			, `review`
+			, `createdAt`
+			, `updatedAt`
+		) VALUE (
+			#{storeId}
+			, #{menu}
+			, #{userName}
+			, #{point}
+			, #{review}
+			, now()
+			, now()		
+		)
+	
+	</insert>
+	
+<!-- 방법2 (추천)-->
+
+	<insert id="insertReviewByField" parameterType="map">
+		INSERT INTO `new_review`
+		(
+			`storeId`
+			, `menu`
+			, `userName`
+			, `point`
+			, `review`
+			, `createdAt`
+			, `updatedAt`
+		) VALUE (
+			#{storeId}
+			, #{menu}
+			, #{userName}
+			, #{point}
+			, #{review}
+			, now()
+			, now()		
+		)
+	
+	</insert>
+
+</mapper>
