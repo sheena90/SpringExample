@@ -46,6 +46,32 @@
 	<c:forEach var="fruit" items="${paramName }" varStatus="status">
 		<h3>${fruit }:::: ${status.count } ${status.index } ${status.first } ${status.last }</h3>
 	</c:forEach>
+	
+	
+	<%-- for(Map<String,Object> map:listMap) --%>
+	<c:forEach var="user" items="${listMap }" varStatus="status">
+		<h3>이름 : ${user.name } 나이 : ${user.age } 취미 : ${user.hobby }</h3>
+	</c:forEach>
+
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>나이</th>
+				<th>취미</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:forEach var="user" items="${listMap }">
+			<tr>
+				<td>${user.name }</td>
+				<td>${user.age }</td>
+				<td>${user.hobby }</td>
+			</tr>
+		</c:forEach>
+		</tbody>
+	</table>
 
 </body>
 </html>
