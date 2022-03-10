@@ -18,4 +18,7 @@ public interface UserDAO {
 			@Param("introduce") String introduce,
 			@Param("email") String email);
 
+	
+	// lesson06의 중복확인
+	public int selectNameCount(@Param("name") String name);
 }

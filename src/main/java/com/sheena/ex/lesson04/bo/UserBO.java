@@ -22,4 +22,23 @@ public class UserBO {
 	public int addUser(String name, String yyyymmdd, String introduce, String email) {
 		return userDAO.insertUser(name, yyyymmdd, introduce, email);
 	}
+	
+	
+	// lesson06의 중복확인
+	public boolean isDuplicate(String name) {
+		
+		int count = userDAO.selectNameCount(name);
+		
+		// 방법1: 하지만 개발자들은 이렇게 잘 안씀
+//		if(count == 0) {
+//			return false;
+//		} else {
+//			return true;
+//		}
+		
+		
+		// 방법2:
+//		return !(count == 0);
+		return (count != 0);
+	}
 }
